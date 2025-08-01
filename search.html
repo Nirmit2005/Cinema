@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Search | Cinema</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Sen:wght@400..800&display=swap" rel="stylesheet"/>
+  <link rel="icon" href="img/favicon.png" type="image/x-icon"/>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: #151515;
+      color: white;
+      font-family: 'Sen', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .main-content {
+      margin-left: 60px;
+      padding: 100px 40px 40px 100px;
+    }
+
+    .search-box {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .search-input {
+      width: 60%;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      outline: none;
+      transition: 0.3s ease;
+    }
+
+    .search-input:focus {
+      box-shadow: 0 0 10px rgba(0, 255, 100, 0.8);
+    }
+
+    .movie-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .movie-card {
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .movie-card:hover {
+      transform: scale(1.05);
+    }
+
+    .movie-thumb {
+      width: 100%;
+      height: 270px;
+      object-fit: cover;
+    }
+
+    .movie-info {
+      padding: 12px;
+    }
+
+    .movie-title {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .movie-genre {
+      font-size: 13px;
+      color: #999;
+    }
+
+    *{
+        margin : 0;
+    }
+
+    body{
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .navbar{
+        width: 100%;
+        height: 50px;
+        background-color: black;
+        top: 0;
+    }
+
+    .navbar-container{
+        display: flex;
+        align-items: center;
+        padding: 0 50px;
+        height: 100%;
+        color :white;
+        font-family: 'Sen', sans-serif;
+    }
+
+    .logo-container{
+        flex: 1; 
+    }
+
+    .logo{
+        font-size: 30px;
+        color: green;
+    }
+
+    .menu-container{
+        flex: 6; 
+    }
+
+    .menu-list{
+        display: flex;
+        list-style: none;
+        align-items: left;
+        justify-content: space-around;
+        cursor: pointer;
+    }
+
+    .menu-list-item{
+        margin-right: 30px;
+    }
+
+    .profile-container{
+        flex: 2; 
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        cursor: pointer;
+    }
+
+    .profile-text-container{
+        margin: 0 20px;
+        cursor: pointer;
+    }
+
+    .profile-picture{
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .sidebar{
+        width: 50px;
+        height: 100%;
+        background-color: black;
+        position: fixed;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        padding-top: 60px;
+        align-items: center;;
+    }
+
+    .left-menu-icon{
+        color: white;
+        font-size: 20px; 
+        margin-bottom: 40px;
+        cursor: pointer;
+    }
+
+    .container{
+        background-color: #151515;
+        min-height: calc(100vh - 50px);
+        color: white;
+    }
+
+    .content-container{
+        margin-left: 50px;
+    }
+
+    .feature-container{
+        height: 50vh;
+        padding: 50px;
+    }
+
+    .featured-title{
+        width: 200px;
+
+    }
+
+    .featured-desc{
+        width: 500px;
+        color: lightgrey;
+        margin: 30px 0;
+    }
+
+    .featured-button{
+        background-color: #4dbf00;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .main-content {
+        margin-left: 60px; 
+        padding: 100px 40px 40px 40px;
+        box-sizing: border-box;
+        width: calc(100% - 60px); 
+    }
+
+    .movie-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 20px;
+        width: 100%;
+    }
+
+    .movie-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding: 40px;
+    }
+
+    .movie-list-item {
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .movie-list-item:hover {
+      transform: scale(1.03);
+    }
+
+    .movie-list-item:hover .movie-list-item-title,
+    .movie-list-item:hover .movie-list-item-desc,
+    .movie-list-item:hover .movie-list-item-button {
+      opacity: 1;
+    }
+    .movie-list-item-image{
+    transition: all 1s ease-in-out;
+    width: 270px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px;
+    }
+
+    .movie-list-item-title{
+        background-color: #333;
+        padding: 0 10px;
+        font-size: 32px;
+        font-weight: bold;
+        position: absolute;
+        top: 10%;
+        left: 50px;
+        transition: 1s all ease-in-out;
+        opacity: 0;
+    }
+
+    .movie-list-item-desc{
+        background-color: #333;
+        padding: 10px;
+        font-size: 14px;
+        position: absolute;
+        top: 30%;
+        left: 60px;
+        width: 190px;
+        opacity: 0;
+        transition: 1s all ease-in-out;
+    }
+
+    .movie-list-item-button{
+        background-color: #4dbf00;
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        position: absolute;
+        bottom: 10px;
+        left: 05px;
+        cursor: pointer;
+        opacity: 0;
+    }
+
+    .arrow{
+        font-size: 120px;
+        position: absolute;
+        top: 90px;
+        right: 0;
+        color: lightgray;
+        opacity: 0.5;
+        cursor: pointer;
+    }
+
+    .footer-text{
+        background-color: #151515;
+        text-align: center;
+        padding: 20px;
+        color: lightgray;
+        font-size: 14px;    
+    }
+
+    .footer-icons{
+        background-color: #151515;
+        gap: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;    
+        padding: 20px;
+        color: lightgray;
+        font-size: 14px;
+        font-family: 'Sen', sans-serif;
+        cursor: pointer;
+    }
+
+    @media screen and (max-width: 768px) {
+      .search-input {
+        width: 90%;
+      }
+
+      .navbar-container{
+        padding: 0 20px;
+    }
+
+    .logo-container{
+        flex: 2; 
+    }
+
+    .menu-container{
+        flex: 4; 
+    }
+
+    .profile-container{
+        flex: 2; 
+    }
+
+    .sidebar{
+        width: 40px;
+        padding-top: 50px;
+    }
+
+    .left-menu-icon{
+        font-size: 18px; 
+        margin-bottom: 30px;
+    }
+}
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-container">
+      <div class="logo-container">
+        <h1 class="logo">
+          <a href="index.html" style="color: green; text-decoration: none;">Cinema</a>
+        </h1>
+      </div>
+      <div class="menu-container">
+        <ul class="menu-list">
+            <li class="menu-list-item.active"><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
+            <li class="menu-list-item.active"><a href="Movies.html" style="color: white; text-decoration: none;">Movies</a></li>
+            <li class="menu-list-item.active"><a href="series.html" style="color: white; text-decoration: none;">Series</a></li> 
+            <li class="menu-list-item.active"><a href="login.html" style="color: white; text-decoration: none;">Login</a></li>
+            <li class="menu-list-item.active"><a href="about.html" style="color: white; text-decoration: none;">About us</a></li>
+        </ul>
+      </div>
+      <div class="profile-container">
+        <img class="profile-picture" src="img/profile.jpg" alt="">
+        <div class="profile-text-container">
+          <span class="profile-text">Profile</span>
+          <i class="fa-solid fa-sort-down"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar">
+    <i onclick="location.href='search.html'" class="left-menu-icon fa-solid fa-magnifying-glass"></i>
+    <i onclick="location.href='index.html'" class="left-menu-icon fa-solid fa-house"></i>
+    <i onclick="location.href='Movies.html'" class="left-menu-icon fa-solid fa-video"></i>
+    <i onclick="location.href='series.html'" class="left-menu-icon fa-solid fa-tv"></i>
+    <i class="left-menu-icon fa-solid fa-hourglass-start"></i>
+    <i class="left-menu-icon fa-solid fa-cart-shopping"></i>
+  </div>
+  <div class="main-content">
+    <div class="search-box">
+      <input type="text" class="search-input" placeholder="Search for movies, series..." />
+    </div>
+    <div class="movie-grid">
+                                <div class="movie-list">
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/1.jpeg" alt="">
+                            <span class="movie-list-item-title">Blade Runner 2049</span>
+                            <p class="movie-list-item-desc">K, an officer with the Los Angeles Police Department, unearths a secret that could create chaos. He goes in search of a former blade runner who has been missing for over three decades.</p>
+                               <button onclick="location.href='https://www.primevideo.com/dp/amzn1.dv.gti.54af725d-4434-ea14-b98b-af121a712577?autoplay=0&ref_=atv_cf_strg_wb'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/2.jpg" alt="">
+                            <span class="movie-list-item-title">The Notebook</span>
+                            <p class="movie-list-item-desc">Noah, a poor man, falls in love with Allie who comes from wealth. They are forced to keep passion for each ot aside due to societal pressure and a difference in the social stature of their families.</p>
+                               <button onclick="location.href='https://www.primevideo.com/dp/amzn1.dv.gti.b8ba6da7-bca9-bf94-4020-3061f9e1f5e3?autoplay=0&ref_=atv_cf_strg_wb'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/3.jpg" alt="">
+                            <span class="movie-list-item-title">Shutter Island</span>
+                            <p class="movie-list-item-desc">US Marshals Teddy Daniels and Chuck Aule are called to investigate the disappearance of a patient at a mental institution on a secluded island and soon stumble upon a sinister plot by the doctors.</p>
+                               <button onclick="location.href='media player2.html'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/4.jpg" alt="">
+                            <span class="movie-list-item-title">Lucky The Racer</span>
+                            <p class="movie-list-item-desc">Two brothers, who are poles apart in nature, become enemies of a gangster who aspires to become a politician. The latter succeeds in his plans, but the brothers decide to end his reign at all costs.</p>
+                               <button onclick="location.href='https://www.sonyliv.com/movies/main-hoon-lucky-the-racer-1000048285?utm_source=Google&utm_medium=WatchNow&utm_campaign=1000048285'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/5.jpeg" alt="">
+                            <span class="movie-list-item-title">Pulp Fiction</span>
+                            <p class="movie-list-item-desc">n the realm of underworld, a series of incidents intertwines the lives of two Los Angeles mobsters, a gangster's wife, a boxer and two small-time criminals.</p>
+                               <button onclick="location.href='https://www.primevideo.com/dp/amzn1.dv.gti.b850d802-224f-403d-80a5-a3f64abb2b79?autoplay=0&ref_=atv_cf_strg_wb'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/6.jpeg" alt="">
+                            <span class="movie-list-item-title">Oldboy</span>
+                            <p class="movie-list-item-desc">A man attempts to find the identity of the person who keeps him captive for several years for no rhyme or reason. Later, he receives money and is released, unaware of the fate that awaits him</p>
+                               <button onclick="location.href='https://www.hotstar.com/in/movies/old-boy/1971311470?utm_source=gwa'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/7.jpeg" alt="">
+                            <span class="movie-list-item-title">Se7en</span>
+                            <p class="movie-list-item-desc">Two detectives, a rookie and a veteran, hunt a serial killer who uses the seven deadly sins as his modus operandi.</p>
+                               <button onclick="location.href='media player1.html'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/15.jpg" alt="">
+                            <span class="movie-list-item-title">The Hangover</span>
+                            <p class="movie-list-item-desc">A few days before his wedding, Doug Billings and his best men go to Las Vegas for a bachelor party. However, the next day, the friends realise that they have no recollection of the previous night.</p>
+                               <button onclick="location.href='https://www.primevideo.com/dp/amzn1.dv.gti.86b3421a-51fd-0a65-c897-9ab54e4c8cad?autoplay=0&ref_=atv_cf_strg_wb'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/16.jpg" alt="">
+                            <span class="movie-list-item-title">F***t C**b</span>
+                            <p class="movie-list-item-desc">Unhappy with his capitalistic lifestyle, a white-collared insomniac forms an underground fight club with Tyler, a careless soap salesman. Soon, their venture spirals down into something sinister.</p>
+                               <button onclick="location.href='media player.html'" class="movie-list-item-button">Watch</button>
+                          </div>
+                           <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/17.jpg" alt="">
+                            <span class="movie-list-item-title">Scarface</span>
+                            <p class="movie-list-item-desc">Tony Montana and his close friend Manny, build a strong drug empire in Miami. However as his power begins to grow, so does his ego and his enemies, and his own paranoia begins to plague his empire.</p>
+                               <button onclick="location.href='https://www.netflix.com/watch/60029681?source=35'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/18.jpg" alt="">
+                            <span class="movie-list-item-title">Road House</span>
+                            <p class="movie-list-item-desc">Ex-UFC fighter Dalton takes a job as a bouncer at a Florida Keys roadhouse, only to discover that this paradise is not all it seems.</p>
+                               <button onclick="location.href='https://www.primevideo.com/dp/amzn1.dv.gti.98ae5e51-4ffa-46e8-be29-2f864db92f6d?autoplay=0&ref_=atv_cf_strg_wb'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/19.jpg" alt="">
+                            <span class="movie-list-item-title">Prisoners</span>
+                            <p class="movie-list-item-desc">When his daughter goes missing, a desperate father takes matters into his own hands while the police pursue multiple leads.</p>
+                               <button onclick="location.href='https://www.primevideo.com/dp/amzn1.dv.gti.3aa9f76f-8377-5b2e-288c-39837a1c7c7e?autoplay=0&ref_=atv_cf_strg_wb'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/20.jpg" alt="">
+                            <span class="movie-list-item-title">Tumbbad</span>
+                            <p class="movie-list-item-desc">When a family builds a shrine for Hastar, a monster who is never to be worshipped, and attempts to get their hands on his cursed wealth, they face catastrophic consequences</p>
+                               <button onclick="location.href='https://www.primevideo.com/dp/amzn1.dv.gti.4cb3965f-e34d-3f49-a60c-acc2bc1f9065?autoplay=0&ref_=atv_cf_strg_wb'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/21.jpg" alt="">
+                            <span class="movie-list-item-title">America Psycho</span>
+                            <p class="movie-list-item-desc">Patrick Bateman, a wealthy investment banker, hides his psychopathic ego from his friends. Later, his illogical fantasies escalate and he submits to an uncontrollable bloodlust</p>
+                               <button onclick="location.href='https://www.primevideo.com/dp/amzn1.dv.gti.00b919c3-abaa-3082-bf99-ceff6ebe6f7a?autoplay=0&ref_=atv_cf_strg_wb'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/8.jpg" alt="">
+                            <span class="movie-list-item-title">House MD</span>
+                            <p class="movie-list-item-desc">Dr. Gregory House, although a medical unconventional, is very skilled and experienced in leading a team of medical diagnostics.</p>
+                               <button onclick="location.href='https://www.hotstar.com/in/shows/house/1971003083'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/9.jpg" alt="">
+                            <span class="movie-list-item-title">The Walking Dead</span>
+                            <p class="movie-list-item-desc">In the wake of a zombie apocalypse, various survivors struggle to stay alive. As they search for safety and evade the undead, they are forced to grapple with rival groups and difficult choices.</p>
+                               <button onclick="location.href='https://www.netflix.com/watch/70210887?source=35'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/10.jpg" alt="">
+                            <span class="movie-list-item-title">Breaking Bad</span>
+                            <p class="movie-list-item-desc">Walter White, a chemistry teac, discovers that he has cancer and decides to get into the meth-making business to repay his medical debts. His priorities begin to change when he partners with Jesse.</p>
+                               <button onclick="location.href='https://www.netflix.com/watch/70196252?source=35'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/11.jpg" alt="">
+                            <span class="movie-list-item-title">True Detictive</span>
+                            <p class="movie-list-item-desc">Louisiana State Police detectives Rust Cohle and Marty Hart as they investigate a string of murders, including one involving a prostitute in 1995.</p>
+                               <button onclick="location.href='https://www.hotstar.com/in/shows/true-detective/1971002860'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/12.jpg" alt="">
+                            <span class="movie-list-item-title">Better Call Saul</span>
+                            <p class="movie-list-item-desc">Ex-con artist Jimmy McGill turns into a small-time attorney and goes through a series of trials and tragedies, as he transforms into his alter ego Saul Goodman, a morally challenged criminal lawyer</p>
+                               <button onclick="location.href='https://www.netflix.com/watch/80084675?source=35'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/13.jpg" alt="">
+                            <span class="movie-list-item-title">The Soprano</span>
+                            <p class="movie-list-item-desc">Tony Soprano, an Italian-American mafia head based in New Jersey, struggles to manage his family and criminal life and confides his affairs to his psychiatrist Jennifer Melfi.</p>
+                               <button onclick="location.href='https://www.hotstar.com/in/shows/the-sopranos/1971002996'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/14.jpg" alt="">
+                            <span class="movie-list-item-title">Game of Thrones</span>
+                            <p class="movie-list-item-desc">Nine noble families wage war against each other in order to gain control over the mythical land of Westeros. Meanwhile, a force is rising after millenniums and threatens the existence of living men.</p>
+                               <button onclick="location.href='https://www.hotstar.com/in/shows/game-of-thrones/1971002880'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/22.jpg" alt="">
+                            <span class="movie-list-item-title">The Office</span>
+                            <p class="movie-list-item-desc">The show documents the exploits of a paper supply company in Scranton, Pennsylvania. With an office including the likes of various peers, this series takes a look at the lives of its co-workers.</p>
+                               <button onclick="location.href='https://www.netflix.com/watch/70069628?source=35'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/23.jpg" alt="">
+                            <span class="movie-list-item-title">The Family Guy</span>
+                            <p class="movie-list-item-desc">Peter Griffin tries to do the right thing for his assorted family of two teenagers, a smart dog and a devilish baby. Despite his good intentions, Peter ends up making hilarious mistakes all the time</p>
+                               <button onclick="location.href='https://www.hotstar.com/in/shows/family-guy/1260024995?search_query=Family+guy&utm_source=gwa'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/24.jpeg" alt="">
+                            <span class="movie-list-item-title">HIMYM</span>
+                            <p class="movie-list-item-desc">Ted Mosby, an architect, recounts to his children the events that led him to meet their mother. His journey is made more eventful by the presence of his friends Lily, Marshall, Robin and Barney</p>
+                               <button onclick="location.href='https://www.netflix.com/watch/80004161?source=35'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/25.jpg" alt="">
+                            <span class="movie-list-item-title">Brooklyn 99</span>
+                            <p class="movie-list-item-desc">Ray Holt, an eccentric commanding officer, and his diverse and quirky team of odd detectives solve crimes in Brooklyn, New York City.</p>
+                               <button onclick="location.href='https://www.netflix.com/watch/80004161?source=35'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/26.jpg" alt="">
+                            <span class="movie-list-item-title">Modern Family</span>
+                            <p class="movie-list-item-desc">Three modern-day families from California try to deal with their kids, quirky spouses and jobs in their own unique ways, often falling into hilarious situations.</p>
+                               <button onclick="location.href='https://www.hotstar.com/in/shows/modern-family/8549'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/27.jpg" alt="">
+                            <span class="movie-list-item-title">The Simpsons</span>
+                            <p class="movie-list-item-desc">Features a satirical portrayal of middle-class American lifestyle. Caricatures certain facets of the American society, culture, television and many features of the human condition.</p>
+                               <button onclick="location.href='https://www.hotstar.com/in/shows/the-simpsons/1260023404'" class="movie-list-item-button">Watch</button>
+                          </div>
+                          <div class="movie-list-item">
+                            <img class="movie-list-item-image" src="img/28.jpg" alt="">
+                            <span class="movie-list-item-title">Daredevil</span>
+                            <p class="movie-list-item-desc">Blind lawyer Matt Murdock fights crime as a masked vigilante at night.</p>
+                               <button onclick="location.href='https://www.netflix.com/watch/80004161?source=35'" class="movie-list-item-button">Watch</button>
+                          </div> 
+                        </div>
+                      </div>
+                      <footer>
+                        <p class="footer-text">
+                          © 2025 Cinema. All rights are not reserved because its a project by a kid whose pretending to be cool.
+                        </p>
+                        <div class="footer-icons">
+                          <i onclick="location.href='https://www.facebook.com/nirmit.chhaparia'" class="fa-brands fa-facebook"></i>
+                          <i onclick="location.href='https://www.instagram.com/niirmittt'" class="fa-brands fa-instagram"></i>
+                          <i onclick="location.href='https://www.twitter.com/@NirmitChhaparia'" class="fa-brands fa-twitter"></i>
+                        </div>
+                      </footer>
+                <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  const searchInput = document.querySelector(".search-input");
+                  const movieItems = document.querySelectorAll(".movie-list-item");
+
+                  searchInput.addEventListener("input", () => {
+                    const query = searchInput.value.toLowerCase().trim();
+
+                    movieItems.forEach(item => {
+                      if (
+                        item.textContent.toLowerCase().includes(query) ||
+                        query === ""
+                      ) {
+                        item.style.display = "";
+                      } else {
+                        item.style.display = "none";
+                      }
+                    });
+                  });
+                });
+                </script>
+</body>
+</html>
