@@ -1,0 +1,105 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Sen:wght@400..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <meta name="description" content="Cinema is a movie and series streaming website where you can find a wide range of movies and series to watch online.">
+    <meta name="keywords" content="movies, series, streaming, online, watch, cinema, entertainment, films, tv shows">
+    <meta name="author" content="Nirmit Chhaparia">
+    <script src="auth.js"></script>
+    <style>
+        body {
+            background-image: url('img/login.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #login-form {
+            background-color: rgba(34, 34, 34, 0.9);
+            position: center;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            color: white;
+            width: 100%;
+            max-width: 400px;
+        }
+        .register-container {
+            background-color: rgba(34, 34, 34, 0.95); /* slight transparency */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            color: white;
+            width: 100%;
+            max-width: 400px;
+        }
+        .register-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .register-container input, .register-container button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .footer-text{
+            text-align: center;
+            padding: 20px;
+            color: lightgray;
+            font-size: 14px;    
+        }
+        .footer-icons{
+            gap: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;    
+            padding: 20px;
+            color: lightgray;
+            font-size: 14px;
+            font-family: 'Sen', sans-serif;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="login-form" class="register-container">
+            <h2>Login</h2>
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <p style="text-align:center;margin-top:10px;">Don’t have an account? <a href="register.html">Register</a></p>
+        </form>
+
+        <div class="footer">
+            <p class="footer-text">© 2025 Cinema. All rights are not reserved because it's a project by a kid who's pretending to be cool.</p>
+            <div class="footer-icons">
+                <i onclick="location.href='https://www.facebook.com/nirmit.chhaparia'" class="fa-brands fa-facebook"></i>
+                <i onclick="location.href='https://www.instagram.com/niirmittt'" class="fa-brands fa-instagram"></i>
+                <i onclick="location.href='https://www.twitter.com/@NirmitChhaparia'" class="fa-brands fa-twitter"></i>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

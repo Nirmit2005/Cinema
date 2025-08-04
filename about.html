@@ -1,0 +1,254 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Cinema</title>
+     <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Sen:wght@400..800&display=swap"
+        rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+     <link rel="icon" href="img/favicon.png" type="image/x-icon">
+    <meta name="description" content="Cinema is a movie and series streaming website where you can find a wide range of movies and series to watch online.">
+    <meta name="keywords" content="movies, series, streaming, online, watch, cinema, entertainment, films, tv shows">
+    <meta name="author" content="Nirmit Chhaparia">
+</head>
+<style>
+    *{
+        margin : 0;
+    }
+
+    body{
+        background-color: #151515;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .navbar{
+        width: 100%;
+        height: 50px;
+        background-color: black;
+        position: fixed;
+        top: 0;
+    }
+
+    .navbar-container{
+        display: flex;
+        align-items: center;
+        padding: 0 50px;
+        height: 100%;
+        color :white;
+        font-family: 'Sen', sans-serif;
+    }
+
+    .logo-container{
+        flex: 1; 
+    }
+
+    .logo{
+        font-size: 30px;
+        color: green;
+    }
+
+    .menu-container{
+        flex: 6; 
+    }
+
+    .menu-list{
+        display: flex;
+        list-style: none;
+        align-items: left;
+        justify-content: space-around;
+        cursor: pointer;
+    }
+
+    .menu-list-item{
+        margin-right: 30px;
+    }
+
+    .profile-container{
+        flex: 2; 
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        cursor: pointer;
+    }
+
+    .profile-text-container{
+        margin: 0 20px;
+        cursor: pointer;
+    }
+
+    .profile-picture{
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .sidebar{
+        width: 50px;
+        height: 100%;
+        background-color: black;
+        position: fixed;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        padding-top: 60px;
+        align-items: center;;
+    }
+
+    .left-menu-icon{
+        color: white;
+        font-size: 20px; 
+        margin-bottom: 40px;
+        cursor: pointer;
+    }
+
+    .about-container{
+        background-color: #151515;
+        margin-top: 100px;
+        padding: 20px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    .about-container h1{
+        text-align: center;
+        margin-bottom: 20px;
+        color: green;
+    }
+
+    .about-container p{
+        margin-bottom: 15px;
+        color: white;
+    }
+
+    .about-container a{
+        color: green;
+        text-decoration: none;
+    }
+
+    .about-container a:hover{
+        text-decoration: underline;
+    }
+
+    .contact-info h2{
+        color: green;
+    }
+
+    .contact-info p{
+        color: white;
+    }
+
+
+    .fa-solid{
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+    }
+
+    .fa-magnifying-glass:before { content: "\f002"; }
+    .fa-house:before { content: "\f015"; }
+    .fa-users:before { content: "\f0c0"; }  
+    .fa-heart:before { content: "\f02e"; }
+    .fa-tv:before { content: "\f26c"; }
+    .fa-hourglass-start:before { content: "\f254"; }
+    .fa-cart-shopping:before { content: "\f07a"; }
+
+    .footer-text{
+        background-color: #151515;
+        text-align: center;
+        padding: 20px;
+        color: lightgray;
+        font-size: 14px;    
+    }
+
+    .footer-icons{
+        background-color: #151515;
+        gap: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;    
+        padding: 20px;
+        color: lightgray;
+        font-size: 14px;
+        font-family: 'Sen', sans-serif;
+        cursor: pointer;
+
+    }
+
+    @media only screen and (max-width: 768px) {
+    .navbar-container{
+        padding: 0 20px;
+    }
+
+    .logo-container{
+        flex: 2; 
+    }
+
+    .menu-container{
+        flex: 4; 
+    }
+
+    .profile-container{
+        flex: 2; 
+    }
+
+    .sidebar{
+        width: 40px;
+        padding-top: 50px;
+    }
+
+    .left-menu-icon{
+        font-size: 18px; 
+        margin-bottom: 30px;
+    }
+}
+</style>
+<body>
+        <div class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container"><h1 class='logo'><a href="index.html" style="color: green; text-decoration: none;">Cinema</a></h1></div>
+            <div class="menu-container">
+                <ul class="menu-list">
+                    <li class="menu-list-item.active"><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
+                    <li class="menu-list-item.active"><a href="Movies.html" style="color: white; text-decoration: none;">Movies</a></li>
+                    <li class="menu-list-item.active"><a href="series.html" style="color: white; text-decoration: none;">Series</a></li> 
+                    <li class="menu-list-item.active"><a href="login.html" style="color: white; text-decoration: none;">Login</a></li>
+                    <li class="menu-list-item.active"><a href="about.html" style="color: white; text-decoration: none;">About us</a></li>
+                </ul>
+            </div>
+            <div class="profile-container">
+                <img class="profile-picture" src="img/profile.jpg" alt="">
+                <div class="profile-text-container">
+                    <span class="profile-text">Profile</span>
+                    <i class="fa-solid fa-sort-down"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <i onclick="location.href='search.html'" class="left-menu-icon fa-solid fa-magnifying-glass"></i>
+        <i onclick="location.href='index.html'" class="left-menu-icon fa-solid fa-house"></i>
+        <i onclick="location.href='Movies.html'" class="left-menu-icon fa-solid fa-video"></i>
+        <i onclick="location.href='series.html'" class="left-menu-icon fa-solid fa-tv"></i>
+        <i class="left-menu-icon fa-solid fa-hourglass-start"></i>
+        <i class="left-menu-icon fa-solid fa-cart-shopping"></i>
+    </div>
+    <div class="about-container">
+        <h1>About Us</h1>
+        <p>Welcome to Cinema, your number one source for all things movies and series. We're dedicated to giving you the very best of entertainment, with a focus on dependability, customer service, and uniqueness.</p>
+        <p>Founded in 2025 by Nirmit Chhaparia, Cinema has come a long way from its beginnings in a small office. When Nirmit first started out, his passion for movies drove him to quit his day job and turn hard work and inspiration into a booming online platform.</p>
+        <p>We now serve customers all over the world and are thrilled that we're able to turn our passion into our own website. We hope you enjoy our content as much as we enjoy offering it to you.</p>
+        <p>Thank you for visiting Cinema!</p>
+    </div>  
+    <div>
+        <p class="footer-text">© 2025 Cinema. All rights are not reserved because its a project by a kid whose pretending to be cool.</p>
+        <div class="footer-icons">
+            <i onclick="location.href='https://www.facebook.com/nirmit.chhaparia'" class="fa-brands fa-facebook"></i>
+            <i onclick="location.href='https://www.instagram.com/niirmittt'" class="fa-brands fa-instagram"></i>
+            <i onclick="location.href='https://www.twitter.com/@NirmitChhaparia'" class="fa-brands fa-twitter"></i>
+        </div>   
+</body>
+</html>
